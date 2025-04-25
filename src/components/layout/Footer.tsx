@@ -1,6 +1,14 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Globe, Shield, Code } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const Footer = () => {
   return (
@@ -8,18 +16,43 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-xl font-bold mb-4">KwikSuite</h3>
+            <h3 className="text-xl font-bold mb-4">
+              kwik<span className="text-yale-blue">commerce</span><span className="text-gamboge">.ai</span>
+            </h3>
             <p className="text-gray-300 mb-4">
-              Empowering ecommerce merchants with powerful tools to build, grow, and optimize their online stores.
+              Empowering ecommerce merchants with intelligent AI tools to build, grow, and optimize their online stores.
             </p>
+            <div className="flex space-x-2">
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button variant="outline" size="icon" className="rounded-full border-gray-600 text-gray-300 hover:text-white hover:border-white">
+                      <Code className="h-4 w-4" />
+                      <span className="sr-only">Tech Stack</span>
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <div className="p-2">
+                      <h4 className="font-bold mb-2">Our Tech Stack</h4>
+                      <ul className="list-disc pl-5 space-y-1">
+                        <li>React + TypeScript</li>
+                        <li>TensorFlow.js for AI</li>
+                        <li>GraphQL API</li>
+                        <li>Serverless Architecture</li>
+                      </ul>
+                    </div>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </div>
           </div>
           
           <div>
             <h4 className="text-lg font-semibold mb-4">Products</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/kwikbuddy" className="text-gray-300 hover:text-white transition-colors">
-                  KwikBuddy
+                <Link to="/kwikstore" className="text-gray-300 hover:text-white transition-colors">
+                  KwikStore Buddy
                 </Link>
               </li>
               <li>
@@ -28,14 +61,14 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <a href="https://apps.shopify.com/kwikcheckout" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
-                  KwikCheckout
-                </a>
+                <Link to="/kwikads" className="text-gray-300 hover:text-white transition-colors">
+                  KwikAds++
+                </Link>
               </li>
               <li>
-                <a href="https://apps.shopify.com/kwikpass" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
-                  KwikPass
-                </a>
+                <Link to="/kwikship" className="text-gray-300 hover:text-white transition-colors">
+                  KwikShip
+                </Link>
               </li>
             </ul>
           </div>
@@ -44,24 +77,24 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Support</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <Link to="/help-center" className="text-gray-300 hover:text-white transition-colors">
                   Help Center
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <Link to="/documentation" className="text-gray-300 hover:text-white transition-colors">
                   Documentation
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <Link to="/contact" className="text-gray-300 hover:text-white transition-colors">
                   Contact Support
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <Link to="/demo" className="text-gray-300 hover:text-white transition-colors">
                   Schedule a Demo
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -70,19 +103,19 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Legal</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <Link to="/terms" className="text-gray-300 hover:text-white transition-colors">
                   Terms of Service
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <Link to="/privacy" className="text-gray-300 hover:text-white transition-colors">
                   Privacy Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <Link to="/cookie-policy" className="text-gray-300 hover:text-white transition-colors">
                   Cookie Policy
-                </a>
+                </Link>
               </li>
               <li>
                 <a href="https://gokwik.co" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
@@ -95,7 +128,7 @@ const Footer = () => {
         
         <div className="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400">
-            &copy; {new Date().getFullYear()} GoKwik. All rights reserved.
+            &copy; {new Date().getFullYear()} kwikcommerce.ai. All rights reserved.
           </p>
           <div className="flex space-x-4 mt-4 md:mt-0">
             <a href="#" className="text-gray-400 hover:text-white transition-colors">

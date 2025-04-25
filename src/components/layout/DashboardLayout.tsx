@@ -9,7 +9,10 @@ import {
   ChevronRight,
   ChevronLeft,
   Menu,
-  X
+  X,
+  Globe,
+  BarChart3,
+  ShoppingCart
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -34,14 +37,29 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
       icon: <Home className="h-5 w-5" /> 
     },
     { 
-      name: 'KwikBuddy', 
-      path: '/kwikbuddy', 
+      name: 'KwikStore Buddy', 
+      path: '/kwikstore', 
       icon: <Package className="h-5 w-5" /> 
     },
     { 
       name: 'KwikGrowth', 
       path: '/kwikgrowth', 
       icon: <BarChart className="h-5 w-5" /> 
+    },
+    { 
+      name: 'KwikAds++', 
+      path: '/kwikads', 
+      icon: <BarChart3 className="h-5 w-5" /> 
+    },
+    { 
+      name: 'KwikShip', 
+      path: '/kwikship', 
+      icon: <Globe className="h-5 w-5" /> 
+    },
+    { 
+      name: 'Analytics', 
+      path: '/analytics', 
+      icon: <ShoppingCart className="h-5 w-5" /> 
     },
     { 
       name: 'Settings', 
@@ -85,10 +103,10 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
             <Link to="/" className="flex items-center">
               {isOpen ? (
                 <span className="text-xl font-bold text-oxford-blue">
-                  Kwik<span className="text-yale-blue">Suite</span>
+                  kwik<span className="text-yale-blue">commerce</span><span className="text-gamboge">.ai</span>
                 </span>
               ) : (
-                <span className="text-xl font-bold text-yale-blue">K</span>
+                <span className="text-xl font-bold text-yale-blue">k</span>
               )}
             </Link>
             <div className="flex items-center">

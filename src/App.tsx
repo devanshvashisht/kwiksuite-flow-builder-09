@@ -9,13 +9,16 @@ import { AppProvider } from "./context/AppContext";
 import Index from "./pages/Index";
 import Onboarding from "./pages/Onboarding";
 import Dashboard from "./pages/Dashboard";
-import KwikBuddy from "./pages/KwikBuddy";
+import KwikStore from "./pages/KwikStore";
 import KwikGrowth from "./pages/KwikGrowth";
+import KwikShip from "./pages/KwikShip";
+import Analytics from "./pages/Analytics";
+import Pricing from "./pages/Pricing";
 import Settings from "./pages/Settings";
 import Campaigns from "./pages/Campaigns";
 import NotFound from "./pages/NotFound";
 
-// KwikBuddy Module Pages
+// KwikStore Buddy Module Pages
 import WebsiteSetup from "./pages/kwikbuddy/WebsiteSetup";
 import SeoSetup from "./pages/kwikbuddy/SeoSetup";
 import PaymentsShipping from "./pages/kwikbuddy/PaymentsShipping";
@@ -42,14 +45,16 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/onboarding" element={<Onboarding />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/pricing" element={<Pricing />} />
+            <Route path="/analytics" element={<Analytics />} />
             
-            {/* KwikBuddy Routes */}
-            <Route path="/kwikbuddy" element={<KwikBuddy />} />
-            <Route path="/kwikbuddy/website-setup" element={<WebsiteSetup />} />
-            <Route path="/kwikbuddy/seo-setup" element={<SeoSetup />} />
-            <Route path="/kwikbuddy/payments-shipping" element={<PaymentsShipping />} />
-            <Route path="/kwikbuddy/apps-setup" element={<AppsSetup />} />
-            <Route path="/kwikbuddy/page-optimization" element={<PageOptimization />} />
+            {/* KwikStore Buddy Routes (formerly KwikBuddy) */}
+            <Route path="/kwikstore" element={<KwikStore />} />
+            <Route path="/kwikstore/website-setup" element={<WebsiteSetup />} />
+            <Route path="/kwikstore/seo-setup" element={<SeoSetup />} />
+            <Route path="/kwikstore/payments-shipping" element={<PaymentsShipping />} />
+            <Route path="/kwikstore/apps-setup" element={<AppsSetup />} />
+            <Route path="/kwikstore/page-optimization" element={<PageOptimization />} />
             
             {/* KwikGrowth Routes */}
             <Route path="/kwikgrowth" element={<KwikGrowth />} />
@@ -58,6 +63,9 @@ const App = () => (
             <Route path="/kwikgrowth/kwik-ads" element={<KwikAds />} />
             <Route path="/kwikgrowth/landing-page-generator" element={<LandingPageGenerator />} />
             <Route path="/kwikgrowth/crm-copilot" element={<CrmCopilot />} />
+            
+            {/* KwikShip Routes */}
+            <Route path="/kwikship" element={<KwikShip />} />
             
             {/* Other Routes */}
             <Route path="/settings" element={<Settings />} />
