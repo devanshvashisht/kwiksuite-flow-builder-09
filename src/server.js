@@ -26,6 +26,18 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
+// UserDetails schema and model
+const userDetailsSchema = new mongoose.Schema({
+  email: { type: String, required: true, unique: true },
+  storeName: String,
+  category: String,
+  ARR: String,
+  averageOrderValue: Number,
+  storeType: String,
+});
+
+const UserDetails = mongoose.model('UserDetails', userDetailsSchema);
+
 // Register route
 app.post('/register', async (req, res) => {
   const { email, password, storeName, businessCategory } = req.body;
@@ -44,6 +56,32 @@ app.post('/login', async (req, res) => {
     res.json({ token });
   } else {
     res.status(401).send('Invalid credentials');
+  }
+});
+
+// Route to save user details
+app.post('/user-details', async (req, res) => {
+  const { email, storeName, category, ARR, averageOrderValue, storeType } = req.body;
+  try {
+    const existingUserDetails = await UserDetails.findOne({ email });
+    if (existingUserDetails) {
+      // Update existing user details
+      existingUserDetails.storeName = storeName;
+      existingUserDetails.category = category;
+      existingUserDetails.ARR = ARR;
+      existingUserDetails.averageOrderValue = averageOrderValue;
+      existingUserDetails.storeType = storeType;
+      await existingUserDetails.save();
+      res.status(200).send('User details updated');
+    } else {
+      // Create new user details
+      const userDetails = new UserDetails({ email, storeName, category, ARR, averageOrderValue, storeType });
+      await userDetails.save();
+      res.status(201).send('User details saved');
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
   }
 });
 

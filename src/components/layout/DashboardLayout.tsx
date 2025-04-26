@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
   Home, 
@@ -24,7 +24,20 @@ interface DashboardLayoutProps {
 const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [storeName, setStoreName] = useState('User Store');
   const location = useLocation();
+  
+  useEffect(() => {
+    // Fetch the store name from the server
+    fetch('http://localhost:3000/user-details')
+      .then(response => response.json())
+      .then(data => {
+        if (data.storeName) {
+          setStoreName(data.storeName);
+        }
+      })
+      .catch(error => console.error('Error fetching store name:', error));
+  }, []);
 
   const isActive = (path: string) => {
     return location.pathname.startsWith(path);
@@ -164,7 +177,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
                 </div>
                 {isOpen && (
                   <div>
-                    <p className="text-sm font-medium">User Store</p>
+                    <p className="text-sm font-medium">{storeName}</p>
                     <p className="text-xs text-gray-500">Basic Plan</p>
                   </div>
                 )}

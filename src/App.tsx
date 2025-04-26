@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AssistantSetup from "./pages/kwikstore/AssistantSetup";
 import { AppProvider } from "./context/AppContext";
 
 // Pages
@@ -51,6 +52,7 @@ const App = () => (
             
             {/* KwikStore Buddy Routes (formerly KwikBuddy) */}
             <Route path="/kwikstore" element={<KwikStore />} />
+            <Route path="/kwikstore/assistant-setup" element={<AssistantSetup />} />
             <Route path="/kwikstore/website-setup" element={<WebsiteSetup />} />
             <Route path="/kwikstore/seo-setup" element={<SeoSetup />} />
             <Route path="/kwikstore/payments-shipping" element={<PaymentsShipping />} />

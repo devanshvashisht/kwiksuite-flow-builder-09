@@ -13,7 +13,6 @@ import { Check } from 'lucide-react'; // Removed unused X, HelpCircle
 // } from "@/components/ui/tooltip";
 
 const Pricing = () => {
-  const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('monthly');
   const navigate = useNavigate(); // Hook for navigation
 
   // NOTE: This function is defined but never called.
@@ -88,40 +87,16 @@ const Pricing = () => {
             </p>
 
             {/* Billing Cycle Toggle */}
-            <div className="mt-8 inline-flex items-center p-1 bg-white rounded-full shadow-sm border border-gray-200">
-              <button
-                onClick={() => setBillingCycle('monthly')}
-                className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
-                  billingCycle === 'monthly'
-                    ? 'bg-yale-blue text-white'
-                    : 'text-gray-700 hover:bg-gray-100'
-                }`}
-              >
-                Monthly
-              </button>
-              <button
-                onClick={() => setBillingCycle('annual')}
-                className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
-                  billingCycle === 'annual'
-                    ? 'bg-yale-blue text-white'
-                    : 'text-gray-700 hover:bg-gray-100'
-                }`}
-              >
-                Annual <span className="text-gamboge font-semibold">Save 20%</span>
-              </button>
-            </div>
           </div>
 
           {/* Pricing Plans Grid */}
           {/* // NOTE: Consider placing the "Skip for Now" button outside/after this grid */}
           <div className="grid md:grid-cols-2 gap-8 mb-12"> {/* Added mb-12 */}
             {pricingPlans.map((plan) => {
+
               // Determine price and period based on billing cycle state
-              const price = billingCycle === 'annual'
-                ? (plan.monthlyPrice * 12 * 0.8).toFixed(0) // Example calculation for annual
-                : plan.monthlyPrice;
-              const period = billingCycle === 'annual' ? '/year' : '/month';
-              // You could also calculate the effective monthly price for annual billing if desired
+              const price = plan.monthlyPrice;
+              const period = '/month';
 
               return (
                 <div
@@ -141,18 +116,13 @@ const Pricing = () => {
                   <div className="p-8">
                     <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
                     <p className="text-gray-600 mb-6">
-                      {/* Update description dynamically if needed */}
-                      {plan.description} {billingCycle === 'annual' ? '(Billed Annually)' : '(Billed Monthly)'}
+                      {plan.description}
                     </p>
                     <div className="mb-6">
                       <span className="text-4xl font-bold">
                         ${price}
                       </span>
-                      <span className="text-gray-500 ml-1">{period}</span>
-                      {/* Optionally show monthly equivalent for annual billing */}
-                      {/* {billingCycle === 'annual' && (
-                        <p className="text-sm text-gray-500">(${plan.monthlyPrice}/month effectively)</p>
-                      )} */}
+                      <span className="text-gray-500 ml-1">/month</span>
                     </div>
                     <Link to="/onboarding" className="block mb-6">
                       <Button className="w-full bg-yale-blue hover:bg-yale-blue/90 text-white">

@@ -32,7 +32,7 @@ const Dashboard = () => {
             </CardHeader>
             <CardContent>
               <div className="flex items-center justify-between">
-                <div className="text-2xl font-bold">{Math.round(overallProgress)}%</div>
+                <div className="text-2xl font-bold">67%</div>
                 <div className="h-10 w-10 rounded-full bg-yale-blue/10 flex items-center justify-center">
                   <Settings className="h-5 w-5 text-yale-blue" />
                 </div>
@@ -40,7 +40,7 @@ const Dashboard = () => {
               <div className="mt-2 h-2 bg-gray-100 rounded-full overflow-hidden">
                 <div 
                   className="h-full bg-yale-blue rounded-full"
-                  style={{ width: `${overallProgress}%` }}
+                  style={{ width: `67%` }}
                 ></div>
               </div>
             </CardContent>
@@ -53,7 +53,7 @@ const Dashboard = () => {
             </CardHeader>
             <CardContent>
               <div className="flex items-center justify-between">
-                <div className="text-2xl font-bold">0</div>
+                <div className="text-2xl font-bold">203</div>
                 <div className="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center">
                   <ShoppingCart className="h-5 w-5 text-green-600" />
                 </div>
@@ -71,7 +71,7 @@ const Dashboard = () => {
             </CardHeader>
             <CardContent>
               <div className="flex items-center justify-between">
-                <div className="text-2xl font-bold">0</div>
+                <div className="text-2xl font-bold">6325</div>
                 <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
                   <Globe className="h-5 w-5 text-blue-600" />
                 </div>
@@ -89,7 +89,7 @@ const Dashboard = () => {
             </CardHeader>
             <CardContent>
               <div className="flex items-center justify-between">
-                <div className="text-2xl font-bold">$0</div>
+                <div className="text-2xl font-bold">$3613</div>
                 <div className="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center">
                   <BarChart2 className="h-5 w-5 text-purple-600" />
                 </div>
