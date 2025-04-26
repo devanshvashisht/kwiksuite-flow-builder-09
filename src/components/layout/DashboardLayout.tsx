@@ -30,7 +30,13 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   useEffect(() => {
     // Fetch the store name from the server
     fetch('http://localhost:3000/user-details')
-      .then(response => response.json())
+      .then(response => {
+        if (response.ok && response.headers.get('content-type')?.includes('application/json')) {
+          return response.json();
+        } else {
+          throw new Error('Invalid JSON response');
+        }
+      })
       .then(data => {
         if (data.storeName) {
           setStoreName(data.storeName);
@@ -59,16 +65,8 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
       path: '/kwikgrowth', 
       icon: <BarChart className="h-5 w-5" /> 
     },
-    { 
-      name: 'KwikAds++', 
-      path: '/kwikads', 
-      icon: <BarChart3 className="h-5 w-5" /> 
-    },
-    { 
-      name: 'KwikShip', 
-      path: '/kwikship', 
-      icon: <Globe className="h-5 w-5" /> 
-    },
+    
+    
     { 
       name: 'Analytics', 
       path: '/analytics', 

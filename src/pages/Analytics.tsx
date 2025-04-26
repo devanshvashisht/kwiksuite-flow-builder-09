@@ -109,40 +109,7 @@ const Analytics = () => {
             </p>
           </div>
           <div className="mt-4 md:mt-0 flex flex-wrap gap-2">
-            <div className="inline-flex items-center rounded-md border border-input bg-background p-1">
-              <Button
-                variant={dateRange === 'last7Days' ? 'secondary' : 'ghost'}
-                size="sm"
-                className="text-xs"
-                onClick={() => setDateRange('last7Days')}
-              >
-                7D
-              </Button>
-              <Button
-                variant={dateRange === 'last30Days' ? 'secondary' : 'ghost'}
-                size="sm"
-                className="text-xs"
-                onClick={() => setDateRange('last30Days')}
-              >
-                30D
-              </Button>
-              <Button
-                variant={dateRange === 'last90Days' ? 'secondary' : 'ghost'}
-                size="sm"
-                className="text-xs"
-                onClick={() => setDateRange('last90Days')}
-              >
-                90D
-              </Button>
-              <Button
-                variant={dateRange === 'year' ? 'secondary' : 'ghost'}
-                size="sm"
-                className="text-xs"
-                onClick={() => setDateRange('year')}
-              >
-                Year
-              </Button>
-            </div>
+            
             <Button className="flex items-center gap-2">
               <Download className="h-4 w-4" />
               Export Report

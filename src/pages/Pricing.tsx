@@ -28,8 +28,8 @@ const Pricing = () => {
     {
       name: 'KwikGrowth Tools',
       description: 'Monthly subscription', // Consider updating description based on billing cycle
-      monthlyPrice: 349,
-      // annualPrice: 349 * 12 * 0.8, // Example: Calculate annual price (20% discount)
+      monthlyPrice: 149,
+      // annualPrice: 149 * 12 * 0.8, // Example: Calculate annual price (20% discount)
       features: [
         { name: 'Full Growth Suite', included: true },
         { name: 'Advanced Analytics', included: true },
@@ -39,9 +39,9 @@ const Pricing = () => {
     },
     {
       name: 'KwikStore Buddy',
-      description: 'Annual subscription', // Consider updating description based on billing cycle
-      monthlyPrice: 299,
-      // annualPrice: 299 * 12 * 0.8, // Example
+      description: 'One time cost', // Consider updating description based on billing cycle
+      monthlyPrice: 349,
+      // annualPrice: 349 * 12 * 0.8, // Example
       features: [
         { name: 'Essential store setup and optimization tools', included: true },
         { name: 'AI-powered assistant for store management', included: true },
@@ -97,6 +97,7 @@ const Pricing = () => {
               // Determine price and period based on billing cycle state
               const price = plan.monthlyPrice;
               const period = '/month';
+              const period1 = ''
 
               return (
                 <div
@@ -122,7 +123,9 @@ const Pricing = () => {
                       <span className="text-4xl font-bold">
                         ${price}
                       </span>
-                      <span className="text-gray-500 ml-1">/month</span>
+                      {plan.name !== 'KwikStore Buddy' && (
+                        <span className="text-gray-500 ml-1">/month</span>
+                      )}
                     </div>
                     <Link to="/onboarding" className="block mb-6">
                       <Button className="w-full bg-yale-blue hover:bg-yale-blue/90 text-white">

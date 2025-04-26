@@ -37,14 +37,7 @@ const Header = () => {
             </span>
           </Link>
           
-          <nav className="hidden md:flex items-center space-x-6">
-              <Link to="#features" className="text-gray-600 hover:text-yale-blue transition-colors">
-                  Features
-              </Link>
-              <Link to="#pricing" className="text-gray-600 hover:text-yale-blue transition-colors">
-                  Pricing
-              </Link>
-          </nav>
+          
         </div>
         
         <div className="flex items-center space-x-4">

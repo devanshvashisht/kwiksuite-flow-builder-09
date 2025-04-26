@@ -13,6 +13,7 @@ import {
   ArrowRight,
   Zap
 } from 'lucide-react';
+import { Description } from '@radix-ui/react-toast';
 
 const KwikGrowth = () => {
   const navigate = useNavigate();
@@ -57,6 +58,14 @@ const KwikGrowth = () => {
       icon: <MessageSquare className="h-5 w-5" />,
       path: '/kwikgrowth/crm-copilot',
       isNew: false,
+    },
+    { 
+      id: 'KwikShip',
+      title: 'KwikShip',
+      description: 'Handle all your shipping integrations in one place. ',
+      name: 'KwikShip', 
+      path: '/kwikship', 
+      icon: <MessageSquare className="h-5 w-5" /> 
     },
   ];
 

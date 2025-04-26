@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AssistantSetup from "./pages/kwikstore/AssistantSetup";
+import CatalogSetup from "./pages/CatalogSetup";
 import { AppProvider } from "./context/AppContext";
 
 // Pages
@@ -58,6 +59,7 @@ const App = () => (
             <Route path="/kwikstore/payments-shipping" element={<PaymentsShipping />} />
             <Route path="/kwikstore/apps-setup" element={<AppsSetup />} />
             <Route path="/kwikstore/page-optimization" element={<PageOptimization />} />
+            <Route path="/kwikstore/catalog-setup" element={<CatalogSetup />} />
             
             {/* KwikGrowth Routes */}
             <Route path="/kwikgrowth" element={<KwikGrowth />} />
