@@ -38,24 +38,12 @@ const Header = () => {
           </Link>
           
           <nav className="hidden md:flex items-center space-x-6">
-            <Link to="/kwikstore" className="text-gray-600 hover:text-yale-blue transition-colors">
-              KwikStore Buddy
-            </Link>
-            <Link to="/kwikgrowth" className="text-gray-600 hover:text-yale-blue transition-colors">
-              KwikGrowth
-            </Link>
-            <Link to="/kwikads" className="text-gray-600 hover:text-yale-blue transition-colors">
-              KwikAds++
-            </Link>
-            <Link to="/kwikship" className="text-gray-600 hover:text-yale-blue transition-colors">
-              KwikShip
-            </Link>
-            <Link to="/analytics" className="text-gray-600 hover:text-yale-blue transition-colors">
-              Analytics
-            </Link>
-            <Link to="/pricing" className="text-gray-600 hover:text-yale-blue transition-colors">
-              Pricing
-            </Link>
+              <Link to="#features" className="text-gray-600 hover:text-yale-blue transition-colors">
+                  Features
+              </Link>
+              <Link to="#pricing" className="text-gray-600 hover:text-yale-blue transition-colors">
+                  Pricing
+              </Link>
           </nav>
         </div>
         

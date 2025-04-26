@@ -61,14 +61,8 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/kwikads" className="text-gray-300 hover:text-white transition-colors">
-                  KwikAds++
-                </Link>
               </li>
               <li>
-                <Link to="/kwikship" className="text-gray-300 hover:text-white transition-colors">
-                  KwikShip
-                </Link>
               </li>
             </ul>
           </div>
@@ -92,9 +86,6 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/demo" className="text-gray-300 hover:text-white transition-colors">
-                  Schedule a Demo
-                </Link>
               </li>
             </ul>
           </div>
