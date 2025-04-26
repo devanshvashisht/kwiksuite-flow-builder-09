@@ -246,14 +246,14 @@ const PaymentsShipping = () => {
                         <Truck className="h-5 w-5 text-gray-600" />
                       </div>
                       <div>
-                        <h3 className="font-medium">ShipRocket</h3>
+                        <h3 className="font-medium">KwikShip</h3>
                         <p className="text-xs text-gray-500">India-focused shipping solution</p>
                       </div>
                     </div>
                     <Button 
                       className="w-full"
                       variant="outline"
-                      onClick={() => window.open('https://shiprocket.in/', '_blank')}
+                      onClick={() => window.open('https://shopify.in/', '_blank')}
                     >
                       View Integration Guide
                       <ExternalLink className="ml-2 h-4 w-4" />

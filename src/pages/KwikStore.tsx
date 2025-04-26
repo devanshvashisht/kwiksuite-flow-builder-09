@@ -115,44 +115,7 @@ const KwikStore = () => {
           </div>
         </div>
 
-        {/* Overall Progress */}
-        <Card className="mb-6">
-          <CardHeader className="pb-2">
-            <div className="flex justify-between items-center">
-              <CardTitle className="text-lg font-medium">Overall Setup Progress</CardTitle>
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button variant="ghost" size="icon" className="h-8 w-8">
-                      <span className="sr-only">Info</span>
-                      <Zap className="h-4 w-4" />
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent align="end" className="w-80 p-4">
-                    <p className="font-medium mb-2">AI-Powered Store Setup</p>
-                    <p className="text-sm">
-                      Our AI analyzes top-performing stores in your industry and recommends optimal 
-                      settings for each step. Complete all steps to maximize your conversion potential.
-                    </p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            </div>
-          </CardHeader>
-          <CardContent>
-            <div className="flex justify-between mb-2">
-              <span className="text-sm font-medium">{Math.round(overallProgress)}% Complete</span>
-              <span className="text-sm text-gray-500">{completedSteps} of {steps.length} steps completed</span>
-            </div>
-            <div className="h-3 bg-gray-100 rounded-full overflow-hidden">
-              <div 
-                className="h-full bg-yale-blue rounded-full transition-all duration-500"
-                style={{ width: `${overallProgress}%` }}
-              ></div>
-            </div>
-          </CardContent>
-        </Card>
-
+        
         {/* Step Cards */}
         <div className="space-y-4">
           {steps.map((step) => (
@@ -182,7 +145,9 @@ const KwikStore = () => {
                       Step {step.id}
                     </span>
                     <div className="text-xs text-gray-500">
-                      {step.progress}% done
+                      <div className="flex justify-center items-center h-full w-full">
+                        {step.progress === 100 ? 'Completed' : 'Pending'}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -198,12 +163,7 @@ const KwikStore = () => {
                     )}
                   </h3>
                   <p className="text-gray-600 mb-3">{step.description}</p>
-                  <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-                    <div 
-                      className={`h-full ${step.progress === 100 ? 'bg-green-500' : 'bg-yale-blue'} rounded-full transition-all duration-500`}
-                      style={{ width: `${step.progress}%` }}
-                    ></div>
-                  </div>
+                  {/* Progress bar removed */}
                 </div>
                 
                 {/* Action button */}

@@ -64,11 +64,8 @@ const Header = () => {
           </DropdownMenu>
 
           <Link to="/onboarding">
-            <Button className="btn-primary">Get Started Free</Button>
+            <Button className="btn-primary">Signup/ Sign In</Button>
           </Link>
-          <Button variant="outline" className="btn-secondary hidden md:inline-flex">
-            Login
-          </Button>
         </div>
       </div>
     </header>

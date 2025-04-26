@@ -4,12 +4,14 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const OnboardingFlow = () => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     email: '',
     password: '',
+    confirmPassword: '',
     storeName: '',
     businessCategory: '',
     arr: '',
@@ -39,6 +41,7 @@ const OnboardingFlow = () => {
       else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Email is invalid';
       if (!formData.password) newErrors.password = 'Password is required';
       else if (formData.password.length < 6) newErrors.password = 'Password must be at least 6 characters';
+    if (formData.password !== formData.confirmPassword) newErrors.confirmPassword = 'Passwords do not match';
     } else if (step === 2) {
       if (!formData.storeName) newErrors.storeName = 'Store name is required';
       if (!formData.businessCategory) newErrors.businessCategory = 'Business category is required';
@@ -126,11 +129,27 @@ const OnboardingFlow = () => {
                   type="password"
                   value={formData.password}
                   onChange={(e) => handleChange('password', e.target.value)}
-                  placeholder="••••••••"
+                  placeholder="•••••••••"
                 />
                 {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
               </div>
+              <div>
+                <Label htmlFor="confirmPassword">Confirm Password</Label>
+                <Input
+                  id="confirmPassword"
+                  type="password"
+                  value={formData.confirmPassword}
+                  onChange={(e) => handleChange('confirmPassword', e.target.value)}
+                  placeholder="•••••••••"
+                />
+                {errors.confirmPassword && <p className="text-red-500 text-sm mt-1">{errors.confirmPassword}</p>}
+              </div>
             </div>
+          <div className="mt-4 text-center">
+            <Link to="/login" className="text-sm text-gray-600 hover:text-gray-800">
+              Already have an account? Sign in
+            </Link>
+          </div>
           </>
         );
       case 2:

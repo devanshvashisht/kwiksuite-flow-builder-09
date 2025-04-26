@@ -19,6 +19,7 @@ import Pricing from "./pages/Pricing";
 import Settings from "./pages/Settings";
 import Campaigns from "./pages/Campaigns";
 import NotFound from "./pages/NotFound";
+import Login from "./pages/Login";
 
 // KwikStore Buddy Module Pages
 import WebsiteSetup from "./pages/kwikbuddy/WebsiteSetup";
@@ -76,6 +77,7 @@ const App = () => (
             <Route path="/settings" element={<Settings />} />
             <Route path="/campaigns" element={<Campaigns />} />
             
+            <Route path="/login" element={<Login />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
