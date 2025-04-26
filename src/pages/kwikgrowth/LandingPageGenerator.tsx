@@ -48,6 +48,7 @@ const LandingPageGenerator = () => {
   
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedPage, setGeneratedPage] = useState<any>(null);
+  const [productImage, setProductImage] = useState<string | null>(null);
   
   // Form
   const form = useForm<z.infer<typeof landingPageSchema>>({
@@ -63,31 +64,71 @@ const LandingPageGenerator = () => {
   // Handle form submission
   const onSubmit = (data: z.infer<typeof landingPageSchema>) => {
     setIsGenerating(true);
+    generateProductImage(data.product);
     
-    // Simulate AI generation
-    setTimeout(() => {
-      setIsGenerating(false);
-      setGeneratedPage({
-        title: `${data.product} - Special ${data.offer.includes('%') ? data.offer : 'Offer'}`,
-        headline: generateHeadline(data),
-        description: generateDescription(data),
-        cta: generateCTA(data),
-        style: data.style,
-        sections: [
-          { type: 'hero', content: 'Hero section with product image and headline' },
-          { type: 'features', content: 'Key product features section' },
-          { type: 'testimonials', content: 'Customer testimonials' },
-          { type: 'offer', content: data.offer },
-          { type: 'cta', content: 'Call to action section' },
-        ],
-        utmUrl: `https://yourdomain.com/landing?utm_source=kwikgrowth&utm_medium=generator&utm_campaign=${data.product.toLowerCase().replace(/\s+/g, '-')}&utm_content=${data.goal.toLowerCase().replace(/\s+/g, '-')}`,
+    fetch('http://localhost:3000/generate-landing-page', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then(response => response.json())
+      .then(result => {
+        setIsGenerating(false);
+        setGeneratedPage({
+          title: `${data.product} - Special ${data.offer.includes('%') ? data.offer : 'Offer'}`,
+          headline: result.generatedText,
+          description: generateDescription(data),
+          cta: generateCTA(data),
+          style: data.style,
+          sections: [
+            { type: 'hero', content: 'Hero section with product image and headline' },
+            { type: 'features', content: 'Key product features section' },
+            { type: 'testimonials', content: 'Customer testimonials' },
+            { type: 'offer', content: data.offer },
+            { type: 'cta', content: 'Call to action section' },
+          ],
+          utmUrl: `https://yourdomain.com/landing?utm_source=kwikgrowth&utm_medium=generator&utm_campaign=${data.product.toLowerCase().replace(/\s+/g, '-')}&utm_content=${data.goal.toLowerCase().replace(/\s+/g, '-')}`,
+        });
+    
+        toast({
+          title: "Landing page generated",
+          description: "Your AI landing page has been generated successfully",
+        });
+      })
+      .catch(error => {
+        setIsGenerating(false);
+        console.error('Error generating landing page:', error);
+        toast({
+          title: "Error",
+          description: "Failed to generate landing page",
+        });
       });
-      
-      toast({
-        title: "Landing page generated",
-        description: "Your AI landing page has been generated successfully",
+  };
+
+  // Function to generate product image using OpenAI
+  const generateProductImage = async (productDescription: string) => {
+    try {
+      const response = await fetch('https://api.openai.com/v1/images/generations', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer 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`
+        },
+        body: JSON.stringify({
+          prompt: productDescription,
+          n: 1,
+          size: '512x512'
+        })
       });
-    }, 3000);
+      const data = await response.json();
+      if (data && data.data && data.data.length > 0) {
+        setProductImage(data.data[0].url);
+      }
+    } catch (error) {
+      console.error('Error generating product image:', error);
+    }
   };
   
   // Helper functions to generate content
@@ -312,7 +353,11 @@ const LandingPageGenerator = () => {
                     <div className="p-4">
                       <div className="bg-white border rounded-md p-6 max-w-2xl mx-auto">
                         <div className="text-center mb-8">
-                          <div className="inline-block mx-auto mb-4 h-20 w-20 bg-gray-200 rounded-full"></div>
+                          {productImage ? (
+                            <img src={productImage} alt="Product" className="inline-block mx-auto mb-4 h-20 w-20 rounded-full" />
+                          ) : (
+                            <div className="inline-block mx-auto mb-4 h-20 w-20 bg-gray-200 rounded-full"></div>
+                          )}
                           <h1 className="text-2xl font-bold mb-2">{generatedPage.headline}</h1>
                           <p className="text-gray-600">{generatedPage.description}</p>
                         </div>

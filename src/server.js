@@ -86,6 +86,33 @@ app.post('/user-details', async (req, res) => {
 });
 
 // Start the server
+import OpenAI from 'openai';
+
+// Initialize OpenAI API
+const openai = new OpenAI({
+  apiKey: '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',
+});
+
+// Route to generate landing page using OpenAI
+app.post('/generate-landing-page', async (req, res) => {
+  const { goal, product, offer, style } = req.body;
+  const prompt = `Generate a landing page for a product. Goal: ${goal}, Product: ${product}, Offer: ${offer}, Style: ${style}.`;
+
+  try {
+    const response = await openai.createCompletion({
+      model: 'text-davinci-003',
+      prompt: prompt,
+      max_tokens: 150,
+    });
+
+    const generatedText = response.data.choices[0].text.trim();
+    res.json({ generatedText });
+  } catch (error) {
+    console.error('Error generating landing page:', error);
+    res.status(500).json({ error: 'Error generating landing page' });
+  }
+});
+
 app.listen(3000, () => {
   console.log('Server running on http://localhost:3000');
 });
